@@ -21,7 +21,12 @@ class BacklinkController extends Controller
 
     public function index_user() {
         $dataBacklink = Backlink::all();
-        return view('backlink',['dataBacklink' => $dataBacklink]);
+
+        $dataNiche = DB::select('SELECT `kategori` FROM `backlink` GROUP BY `kategori` ORDER BY `id` ASC');
+
+        $dataBahasa = DB::select('SELECT `bahasa` FROM `backlink` GROUP BY `bahasa` ORDER BY `id` ASC');
+
+        return view('backlink',['dataBacklink' => $dataBacklink,'dataNiche' => $dataNiche,'dataBahasa' => $dataBahasa]);
     }
 
     public function tambah_backlink() {

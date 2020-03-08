@@ -24,23 +24,23 @@
         <form action="" method="post">
             {{ csrf_field() }}
             <div class="form-group">
-                <table>
-                    <tr>
-                        <td>
-                            <select name="niche" class="form-control" style="width: 200px">
-                                <option value="">Pilih Niche</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select name="bahasa" class="form-control" style="width: 200px" >
-                                <option value="">Pilih Bahasa</option>
-                            </select>
-                        </td>
-                        <td>
-                            <button type="submit">FILTER</button>
-                        </td>
-                    </tr>
-                </table>
+                <select name="niche" class="form-control" style="width: 250px">
+                    <option value="">Pilih Niche</option>
+                    @foreach($dataNiche as $dataN)
+                        <option value="{{ $dataN->kategori }}">{{ $dataN->kategori }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="bahasa" class="form-control" style="width: 250px" >
+                    <option value="">Pilih Bahasa</option>
+                    @foreach($dataBahasa as $dataB)
+                        <option value="{{ $dataB->bahasa }}">{{ $dataB->bahasa }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">FILTER</button>
             </div>
         </form>
 
